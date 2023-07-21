@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
 const ProfileComponent = ({ loggedUser }) => {
-
   const [center, setCenter] = useState({
     lat: -3.745,
     lng: -38.523,
@@ -42,57 +41,61 @@ const ProfileComponent = ({ loggedUser }) => {
 
   return (
     <div className="flex w-full ">
-      <div className="border-r-2 border-slate-200 w-[40%]">
-        <div className="mx-auto">
+      <div className="border-r-2 border-slate-200 ">
+        <div className="mx-auto w-fit">
           <img
-            className="w-[13rem] rounded-full"
+            style={{ width: "13rem" }}
+            className="w-[10rem] rounded-full"
             src={loggedUser?.profilepicture}
           ></img>
           <h3>{loggedUser?.name}</h3>
         </div>
 
-        <div className="grid grid-cols-3">
-          <p>Username</p>
-          <p>:</p>
-          <p>{loggedUser?.username}</p>
-          <p>e-mail</p>
-          <p>:</p>
-          <p>{loggedUser?.email}</p>
-          <p>Phone</p>
-          <p>:</p>
-          <p>{loggedUser?.phone}</p>
-          <p>Website</p>
-          <p>:</p>
-          <p>{loggedUser?.website}</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
+          <p className="w-fit">Username</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.username}</p>
+          <p className="w-fit">e-mail</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.email}</p>
+          <p className="w-fit">Phone</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.phone}</p>
+          <p className="w-fit">Website</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.website}</p>
         </div>
         <h2>Company</h2>
-        <div className="grid grid-cols-3">
-          <p>Name</p>
-          <p>:</p>
-          <p>{loggedUser?.company?.name}</p>
-          <p>catchPhrase</p>
-          <p>:</p>
-          <p>{loggedUser?.company?.catchPhrase}</p>
-          <p>bs</p>
-          <p>:</p>
-          <p>{loggedUser?.company?.bs}</p>
+        <div
+          className="grid grid-cols-3"
+          style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}
+        >
+          <p className="w-fit">Name</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.company?.name}</p>
+          <p className="w-fit">catchPhrase</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.company?.catchPhrase}</p>
+          <p className="w-fit">bs</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.company?.bs}</p>
         </div>
       </div>
       <div>
         <h2>Address :</h2>
-        <div className="grid grid-cols-3">
-          <p>Street</p>
-          <p>:</p>
-          <p>{loggedUser?.address?.street}</p>
-          <p>Suite</p>
-          <p>:</p>
-          <p>{loggedUser?.address?.suite}</p>
-          <p>City</p>
-          <p>:</p>
-          <p>{loggedUser?.address?.city}</p>
-          <p>Zipcode</p>
-          <p>:</p>
-          <p>{loggedUser?.address?.zipcode}</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
+          <p className="w-fit">Street</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.address?.street}</p>
+          <p className="w-fit">Suite</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.address?.suite}</p>
+          <p className="w-fit">City</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.address?.city}</p>
+          <p className="w-fit">Zipcode</p>
+          <p className="w-fit">:</p>
+          <p className="w-fit">{loggedUser?.address?.zipcode}</p>
         </div>
         <div>
           <div className="rounded-xl">
