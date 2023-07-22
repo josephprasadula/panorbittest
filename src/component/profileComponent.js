@@ -4,10 +4,7 @@ import { useRouter } from "next/router";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 
 const ProfileComponent = ({ loggedUser }) => {
-  const [center, setCenter] = useState({
-    lat: -3.745,
-    lng: -38.523,
-  });
+  const [center, setCenter] = useState();
 
   useEffect(() => {
     if (loggedUser?.address) {
@@ -16,7 +13,7 @@ const ProfileComponent = ({ loggedUser }) => {
         lng: Number(loggedUser?.address?.geo?.lng),
       });
     }
-  }, [loggedUser]);
+  }, [loggedUser?.address?.geo]);
   const containerStyle = {
     width: "624px",
     height: "400px",
@@ -40,66 +37,59 @@ const ProfileComponent = ({ loggedUser }) => {
   });
 
   return (
-    <div className="flex w-full ">
+    <div style={{marginTop:'34px'}} className="flex w-full">
       <div className="border-r-2 border-slate-200 ">
-        <div className="mx-auto w-fit">
+        <div className="mx-auto w-fit text-center">
           <img
             style={{ width: "13rem" }}
             className="w-[10rem] rounded-full"
             src={loggedUser?.profilepicture}
           ></img>
-          <h3>{loggedUser?.name}</h3>
+          <h3 style={{color:'#545454',fontWeight:800}}>{loggedUser?.name}</h3>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
-          <p className="w-fit">Username</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.username}</p>
-          <p className="w-fit">e-mail</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.email}</p>
-          <p className="w-fit">Phone</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.phone}</p>
-          <p className="w-fit">Website</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.website}</p>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)" }}>
+          <p style={{color:'#9A9A9A'}} className="w-fit text-[#9A9A9A]">Username :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit text-[#545454]">{loggedUser?.username}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">e-mail :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.email}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">Phone :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.phone}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">Website :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.website}</p>
         </div>
-        <h2>Company</h2>
+        <div className="text-center">
+          <h2 style={{color:'#545454',fontWeight:800}}>Company</h2>
+        </div>
         <div
           className="grid grid-cols-3"
-          style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}
+          style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)" }}
         >
-          <p className="w-fit">Name</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.company?.name}</p>
-          <p className="w-fit">catchPhrase</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.company?.catchPhrase}</p>
-          <p className="w-fit">bs</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.company?.bs}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">Name :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.company?.name}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">catchPhrase :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.company?.catchPhrase}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">bs :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.company?.bs}</p>
         </div>
       </div>
-      <div>
-        <h2>Address :</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)" }}>
-          <p className="w-fit">Street</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.address?.street}</p>
-          <p className="w-fit">Suite</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.address?.suite}</p>
-          <p className="w-fit">City</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.address?.city}</p>
-          <p className="w-fit">Zipcode</p>
-          <p className="w-fit">:</p>
-          <p className="w-fit">{loggedUser?.address?.zipcode}</p>
+      <div style={{paddingLeft:'48px'}} className="pl-[48px]">        
+        <div className="text-center">
+          <h2 style={{color:'#545454',fontWeight:800}}>Address</h2>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)",width:'50%' }}>
+          <p style={{color:'#9A9A9A'}} className="w-fit">Street :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.address?.street}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">Suite :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.address?.suite}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">City :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.address?.city}</p>
+          <p style={{color:'#9A9A9A'}} className="w-fit">Zipcode :</p>
+          <p style={{color:'#545454',fontWeight:800}} className="w-fit">{loggedUser?.address?.zipcode}</p>
         </div>
         <div>
           <div className="rounded-xl">
-            {isLoaded && (
+            {center&&isLoaded && (
               <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}

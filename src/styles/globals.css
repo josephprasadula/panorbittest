@@ -27,3 +27,18 @@ body {
     rgb(var(--background-start-rgb)); */
     font-family: 'Assistant', sans-serif;
 }
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar track */
+}
+::-webkit-scrollbar-thumb {
+  background-color: #D8D8D8; /* Color of the thumb */
+  border-radius: 3px; /* Rounded corners for the thumb */
+}
+*{
+  color: #545454;
+  font-weight: 400;
+}
+.icon{
+  color:'#ffffff' !important
+}
+
